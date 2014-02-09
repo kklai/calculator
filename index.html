@@ -3,10 +3,61 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="script.js"></script>
 </head>
 <body>
 	<div class="calculator">
-		<div class="display"></div>
+		<div class="display">
+			<div class="display-text"></div>
+		</div>
+
+		<div class="buttons">
+			<div class="row">
+			  <div class="btn">MC</div>
+			  <div class="btn">M+</div>
+			  <div class="btn">M-</div>
+			  <div class="btn">MR</div>
+			</div>
+
+			<div class="row">
+			  <div class="btn" id="clear">C</div>
+			  <div class="btn">&nbsp;&plusmn;&nbsp;</div>
+			  <div class="btn">&nbsp;&divide;&nbsp;</div>
+			  <div class="btn">&nbsp;x&nbsp;</div>
+			</div>
+
+			<div class="row">
+			  <div class="btn">7</div>
+			  <div class="btn">8</div>
+			  <div class="btn">9</div>
+			  <div class="btn">&nbsp;-&nbsp;</div>
+			</div>
+
+			<div class="row">
+			  <div class="btn">4</div>
+			  <div class="btn">5</div>
+			  <div class="btn">6</div>
+			  <div class="btn">&nbsp;+&nbsp;</div>
+			</div>
+
+			<div class="row">
+				<div class="btn">1</div>
+			  <div class="btn">2</div>
+			  <div class="btn">3</div>
+			</div>
+
+			<div class="row">
+				<div class="btn" id="zero">0</div>
+			  <div class="btn">.</div>
+			</div>
+
+			<div class="equal-row">
+				<div class="btn" id="equal">=</div>
+			</div>
+
+		</div>
+
 	</div>
 
 </body>
