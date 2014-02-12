@@ -32,7 +32,7 @@ function evaluate(n) {
 			value = value - temp;
 		} else if (operator === "x") {
 			value = value * temp;
-		} else if (operator === "/") {
+		} else if (operator === "÷") {
 			value = value/temp;
 		} else { 
 			console.log(operator);
