@@ -1,16 +1,16 @@
-var input, cal, num, value, operator, pm;
+var input, cal, num, value, operator, pm, check;
 
 function readOperand(n){
 	num = n[0];
 	n.shift();
-	num = parseInt(num)
-	if (n[0] === "-") {
-		num = n[0] + n[1];
-		num = parseInt(num)
+	if (num.length === 0) {
+		num = n[0] + n[1]
 		n.shift();
 		n.shift();
-		return num
-	} else if (isNaN(num) == true) {
+		console.log(n)
+	}
+	num = parseInt(num, 10)
+	if (isNaN(num) == true) {
 		return "First input must be a number."
 	} else {
 		return num
@@ -32,10 +32,9 @@ function evaluate(n) {
 			value = value - temp;
 		} else if (operator === "x") {
 			value = value * temp;
-		} else if (operator === "÷") {
-			value = value/temp;
-		} else { 
-			console.log(operator);
+		} else if (operator === "/"){
+			value = value / temp
+		} else {
 			console.log('Unrecognized operator');
 		}
 	}
@@ -60,14 +59,21 @@ function clear() {
 
 $(document).ready(function(){
 	$('.btn').click(function(){
-		input = this.innerHTML;
-		if (input != '=') {
+		input = $(this).data('id');
+		if (input != '=' && input != 'plusminus') {
 			$(".display-text").append(input);
 		}
 	})
 
 	$('#plusminus').click(function(){
-		pm = $('.display-text').innerHTML;
+		calculate();
+		// console.log(val);
+		if (val < 0) {
+			val = Math.abs(val)
+		} else {
+			val = -Math.abs(val)
+		}
+		$('.display-text').html(val)
 	})
 
 	$('#clear').click(function(){
