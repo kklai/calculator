@@ -30,24 +30,28 @@ function evaluate(n) {
 			value = value * temp;
 		} else if (operator === "/"){
 			value = value / temp
-		} else if ((n.length > 1) && ((operator === "+") || (operator === "-")) && ((n.indexOf("x") != -1) || (n.indexOf("/") != -1))) {
-			saved_op = operator;
-			new_op = n.shift();
-			new_temp = parseInt(n.shift());
-			if (new_op === "x") {
-				new_value = temp * new_temp;
-			} else if (new_op === "/") {
-				new_value = temp / new_temp
-			}
-			if (operator === "+") {
-				value = value + new_value
+		} else if ((operator === "+") || (operator === "-")) {
+			if((n.length != 0) && ((n[0] == "x") || (n[0] == "/"))) {
+				old_temp = value
+				new_op = n.shift();
+				new_temp = parseInt(n.shift())
+				console.log("new temp is " + new_temp)
+				console.log("temp is " + new_temp)
+					if (new_op === "x") {
+						value = temp * new_temp
+					} else if (new_op === "/") {
+						value = temp / new_temp
+					}
+					if (operator === "+") {
+						value = old_temp + value
+					} else if (operator === "-") {
+						value = old_temp - value
+					}
+			} else if (operator === "+") {
+				value = value + temp
 			} else if (operator === "-") {
-				value = value - new_value
+				value = value - temp
 			}
-		} else if (operator === "+") {
-			value = value + temp
-		} else if (operator === "-") {
-			value = value - temp
 		}
 	}
 	return value;
@@ -77,13 +81,18 @@ $(document).ready(function(){
 	})
 
 	$('#plusminus').click(function(){
-		calculate();
-		if (val < 0) {
-			val = Math.abs(val)
-		} else {
-			val = -Math.abs(val)
+		cal = $('.display-text').html()
+		cal = cal.split('&nbsp;')
+		last = cal[cal.length -1]
+		if (last != "") {
+			last_term = parseInt(last)
+			if (isNaN(num) != true) {
+				last_term = last_term * -1
+				cal[cal.length -1] = last_term
+				new_cal = cal.join('&nbsp;')
+				$('.display-text').html(new_cal)
+			}
 		}
-		$('.display-text').html(val)
 	})
 
 	$('#clear').click(function(){
